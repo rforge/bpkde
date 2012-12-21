@@ -1,0 +1,162 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		0EADCD0F1545C1BF00D38640 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
+		0EADCD101545C1BF00D38640 /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
+		0EADCD111545C1BF00D38640 /* inst */ = {isa = PBXFileReference; lastKnownFileType = folder; path = inst; sourceTree = "<group>"; };
+		0EADCD121545C1BF00D38640 /* man */ = {isa = PBXFileReference; lastKnownFileType = folder; path = man; sourceTree = "<group>"; };
+		0EADCD131545C1BF00D38640 /* R */ = {isa = PBXFileReference; lastKnownFileType = folder; path = R; sourceTree = "<group>"; };
+		0EDC20E4156C59B400A5739E /* NAMESPACE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NAMESPACE; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0EADCCFF1545BF1500D38640 = {
+			isa = PBXGroup;
+			children = (
+				0EADCD101545C1BF00D38640 /* DESCRIPTION */,
+				0EDC20E4156C59B400A5739E /* NAMESPACE */,
+				0EADCD131545C1BF00D38640 /* R */,
+				0EADCD0F1545C1BF00D38640 /* data */,
+				0EADCD111545C1BF00D38640 /* inst */,
+				0EADCD121545C1BF00D38640 /* man */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		0EADCD061545BF1500D38640 /* bpkde */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 0EADCD091545BF1500D38640 /* Build configuration list for PBXLegacyTarget "bpkde" */;
+			buildPhases = (
+			);
+			buildToolPath = R;
+			dependencies = (
+			);
+			name = bpkde;
+			passBuildSettingsInEnvironment = 1;
+			productName = bpkde;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		0EADCD011545BF1500D38640 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0EADCD041545BF1500D38640 /* Build configuration list for PBXProject "bpkde" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0EADCCFF1545BF1500D38640;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EADCD061545BF1500D38640 /* bpkde */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		0EADCD071545BF1500D38640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0EADCD081545BF1500D38640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0EADCD0A1545BF1500D38640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0EADCD0B1545BF1500D38640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EADCD041545BF1500D38640 /* Build configuration list for PBXProject "bpkde" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EADCD071545BF1500D38640 /* Debug */,
+				0EADCD081545BF1500D38640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EADCD091545BF1500D38640 /* Build configuration list for PBXLegacyTarget "bpkde" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EADCD0A1545BF1500D38640 /* Debug */,
+				0EADCD0B1545BF1500D38640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EADCD011545BF1500D38640 /* Project object */;
+}
