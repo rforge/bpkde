@@ -12,6 +12,7 @@
 		0EADCD111545C1BF00D38640 /* inst */ = {isa = PBXFileReference; lastKnownFileType = folder; path = inst; sourceTree = "<group>"; };
 		0EADCD121545C1BF00D38640 /* man */ = {isa = PBXFileReference; lastKnownFileType = folder; path = man; sourceTree = "<group>"; };
 		0EADCD131545C1BF00D38640 /* R */ = {isa = PBXFileReference; lastKnownFileType = folder; path = R; sourceTree = "<group>"; };
+		0EC0C02D16AF58AC004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
 		0EDC20E4156C59B400A5739E /* NAMESPACE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NAMESPACE; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -21,6 +22,7 @@
 			children = (
 				0EADCD101545C1BF00D38640 /* DESCRIPTION */,
 				0EDC20E4156C59B400A5739E /* NAMESPACE */,
+				0EC0C02D16AF58AC004A7926 /* .Rbuildignore */,
 				0EADCD131545C1BF00D38640 /* R */,
 				0EADCD0F1545C1BF00D38640 /* data */,
 				0EADCD111545C1BF00D38640 /* inst */,
