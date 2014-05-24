@@ -20,7 +20,7 @@ M0 <- function(grid, kern.fun, ...)
   score <- kern.fun(Y, ...)
 
   k <- discretize.kernel(grid, kern.fun, ...)
-  k.dft <- prod(sapply(grid$limits, diff)) * fft(k$z) / M^d
+  k.dft <- prod(grid$deltas) * fft(k$z)
   grid.dft <- fft(grid$xi) / M^d
   z <- Re(fft(grid.dft * k.dft, inverse = TRUE))
 

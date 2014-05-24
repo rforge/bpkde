@@ -2,15 +2,14 @@ bp.support <- function(grid, bandwidths, level = 3, ...)
 {
   M <- grid$M
   d <- grid$d
-  delta <- grid$delta
+  deltas <- grid$deltas
 
   alphas <- bandwidths$alphas
   lambdas <- bandwidths$lambdas
 
-  x <- seq(from = -M*delta/2, by = delta, length = M)
-  X <- list()
-  X[1:d] <- list(x)
-  X <- as.matrix(expand.grid(X))
+  seq.fun <- function(d, k) seq(-k/2 * d, (k/2-1)*d, by = d)
+  axes <- apply(matrix(deltas, nrow = 1), 2, seq.fun, k = M)
+  X <- as.matrix(expand.grid(as.data.frame(axes)))
   dimnames(X) <- list(1:dim(X)[1], 1:d)
 
   for(i in 1:(dim(alphas)[2])) {
@@ -20,7 +19,7 @@ bp.support <- function(grid, bandwidths, level = 3, ...)
   }
 
   list(X = X, index = as.integer(dimnames(X)[[1]]),
-       axes = matrix(rep(x, d), ncol = d))
+       axes = axes)
 }
 
 

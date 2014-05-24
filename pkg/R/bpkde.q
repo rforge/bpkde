@@ -1,7 +1,8 @@
 bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
-                  r = 7, padding = 3)
+                  r = 7, padding = 4)
 {
   name <- deparse(substitute(X))
+  X <- data.matrix(X)
 
   if(dim(X)[2] == 2 && missing(alphas)) {
     thetas <- seq(from = -pi/2, to = pi/2, length = 91)[-91]
@@ -13,8 +14,9 @@ bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
     alphas <- apply(alphas, 2, function(u) u / sqrt(sum(u^2)))
   }
 
-  bws <- mvbw(X, alphas, bw)
-  xbin <- mvlinbin(X, r, padding = padding * max(bws$lambdas))
+  b <- apply(alphas, 2, function(u, Y, bw) bw(drop(Y %*% u)), Y = X, bw = bw)
+  bws <- list(alphas = alphas, lambdas = b)
+  xbin <- mvlinbin(X, r, padding = padding, bw = bw)
   M <- xbin$M
   d <- xbin$d
   xbin.dft <- fft(xbin$xi) / M^d
@@ -23,16 +25,16 @@ bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
     h(grid = g, kern.fun = bpk, a = x, bandwidths = b,
       kernel = u, grid.fun = bp.support)
 
-  interval <- c(0.1, 2.0)
+  opt <- optimize(lscv, c(0.1, 2.0), g = xbin, b = bws,
+                  h = score.fun, u = kernel)
 
-  opt <- optimize(lscv, interval, g = xbin, b = bws, h = score.fun, u = kernel)
   a.hat <- opt$minimum
   lscv.score <- opt$objective
 
   K <- discretize.kernel(xbin, bpk, a = a.hat, bandwidths = bws,
                          kernel = kernel, grid.fun = bp.support)
 
-  K.dft <- prod(sapply(xbin$limits, diff)) * fft(K$z) / M^d
+  K.dft <- prod(xbin$deltas) * fft(K$z)
 
   z <- Re(fft(xbin.dft * K.dft, inverse = TRUE))
   z[z < 0.0] <- 0.0

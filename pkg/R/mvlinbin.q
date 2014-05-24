@@ -1,7 +1,5 @@
-mvlinbin <- function(X, r = 7, padding = 0)
+mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
 {
-  name <- deparse(substitute(X))
-
   if(!is.array(X))
     X <- matrix(X, ncol = 1)
 
@@ -9,24 +7,21 @@ mvlinbin <- function(X, r = 7, padding = 0)
   d <- dim(X)[2]
   M <- 2^r
 
-  ranges <- apply(X, 2, range)
-  spreads <- apply(ranges, 2, diff)
-  spread <- max(spreads) + 2 * padding
-  delta <- spread / M
-  spread <- spread / 2
+  ranges <- apply(X, 2, range) + padding * (c(-1, 1) %o% apply(X, 2, bw))
+  deltas <- apply(ranges, 2, diff) / M
+  seq.fun <- function(u, len) seq(u[1], u[2], length = len)
+  axes <- apply(ranges, 2, seq.fun, len = M + 1)
+  colnames(axes) <- colnames(X)
 
-  middles <- apply(ranges, 2, mean)
-  limits <- lapply(middles, function(u, s) u + c(-1, 1)*s, s = spread)
+  if(d == 1) {
+    linbin <- eval(parse(text = paste("KernSmooth", "linbin", sep = ":::")))
+    xi <- matrix(linbin(X, axes[,1]), ncol = 1)
+  }
 
-  axes <- matrix(0.0, M+1, d)
-  for(j in 1:d)
-    axes[,j] <- seq(limits[[j]][1], limits[[j]][2], length = M+1)
-
-  if(d == 1)
-    xi <- matrix(KernSmooth:::linbin(X, axes[,1]), ncol = 1)
-
-  else if(d == 2)
-    xi <- KernSmooth:::linbin2D(X, axes[,1], axes[,2])
+  else if(d == 2) {
+    linbin2D <- eval(parse(text = paste("KernSmooth", "linbin2D", sep = ":::")))
+    xi <- linbin2D(X, axes[,1], axes[,2])
+  }
 
   else {
     int <- matrix(0, N, d)
@@ -46,16 +41,16 @@ mvlinbin <- function(X, r = 7, padding = 0)
     for(i in 1:N) {
       K <- matrix(int[i, ], nrow = pow2d, ncol = d, byrow = TRUE) + adj
       vertices <- apply(K+J, 1, function(u, Y) Y[u], Y = axes)
-      B <- delta - abs(vertices - X[i,])
+      B <- deltas - abs(vertices - X[i,])
       xi[K] <- xi[K] + apply(B, 2, prod)
     }
   }
 
   xi <- do.call("[", c(list(xi), as.list(rep(-(M+1), d))))
-  xi <- xi / (sum(xi) * delta^d)
+  xi <- xi / (sum(xi) * prod(deltas))
 
-  ans <- list(xi = xi, axes = axes[-(M+1),], X = X, name = name,
-              delta = delta, M = M, N = N, d = d, limits = limits)
+  ans <- list(xi = xi, axes = axes[-(M+1),], X = X, deltas = deltas,
+              M = M, N = N, d = d)
 
   oldClass(ans) <- "mvlinbin"
   ans

@@ -3,14 +3,13 @@ discretize.kernel <- function(grid, kern.fun, ..., grid.fun = NULL,
 {
   M <- grid$M
   d <- grid$d
-  delta <- grid$delta
+  deltas <- grid$deltas
+  var.names <- colnames(grid$X)
 
   if(is.null(grid.fun)) {
-	  x <- seq(-M*delta/2, (M/2-1)*delta, by = delta)
-	  axes <- matrix(rep(x, d), ncol = d)
-    X <- list()
-    X[1:d] <- list(x)
-    X <- as.matrix(expand.grid(X))
+    seq.fun <- function(d, k) seq(-k/2 * d, (k/2-1)*d, by = d)
+    axes <- apply(matrix(deltas, nrow = 1), 2, seq.fun, k = M)
+    X <- as.matrix(expand.grid(as.data.frame(axes)))
     index <- 1:(M^d)
   }
 
@@ -21,11 +20,13 @@ discretize.kernel <- function(grid, kern.fun, ..., grid.fun = NULL,
     axes <- grid$axes
   }
 
+  colnames(axes) <- var.names
+
   z <- array(0.0, dim = rep(M, d))
   z[index] <- kern.fun(X, ...)
 
   if(scale) {
-    scale <- sum(z[index]) * delta^d
+    scale <- sum(z[index]) * prod(deltas)
     z[index] <- z[index] / scale
   }
 

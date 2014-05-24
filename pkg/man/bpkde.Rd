@@ -10,7 +10,7 @@ Compute a \code{d}-dimensional kernel density estimate using a back-projected ke
 }
 
 \usage{
-bpkde(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1, r = 7, level = 3)
+bpkde(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1, r = 7, padding = 4)
 }
 
 \arguments{
@@ -20,7 +20,7 @@ bpkde(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1, r = 7, level = 3)
   \item{bw}{the function used to compute the univariate bandwidth estimates.}
   \item{score.fun}{the function used to compute the least squares cross-validation score for the kernel; see \code{\link{M0}} and \code{\link{M1}}.}
   \item{r}{the computations are performed using linear binning and the discrete Fourier transform. The number of the grid points used is \eqn{2^r}.}
-  \item{level}{a positive numeric value. Only grid points that are less than \code{level} bandwidths from the origin in all directions are assigned nonzero density.}
+  \item{padding}{a postive numeric value specifying the amount of zero-padding in units of bandwidth.}
 }
 
 \value{

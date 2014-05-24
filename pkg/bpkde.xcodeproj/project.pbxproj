@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contour.discretize.kernel.q; path = R/contour.discretize.kernel.q; sourceTree = "<group>"; };
+		0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.discretize.kernel.q; path = R/image.discretize.kernel.q; sourceTree = "<group>"; };
+		0E6860CE1930167500BE95DE /* image.mvlinbin.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.mvlinbin.q; path = R/image.mvlinbin.q; sourceTree = "<group>"; };
 		0EADCD101545C1BF00D38640 /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EC0C02D16AF58AC004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
 		0EC0C04216AF5AF7004A7926 /* Bimodal1.RData */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bimodal1.RData; path = data/Bimodal1.RData; sourceTree = "<group>"; };
@@ -28,7 +31,6 @@
 		0EC0C05216AF5B06004A7926 /* kernels.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = kernels.q; path = R/kernels.q; sourceTree = "<group>"; };
 		0EC0C05316AF5B06004A7926 /* M0.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = M0.q; path = R/M0.q; sourceTree = "<group>"; };
 		0EC0C05416AF5B06004A7926 /* M1.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = M1.q; path = R/M1.q; sourceTree = "<group>"; };
-		0EC0C05516AF5B06004A7926 /* mvbw.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = mvbw.q; path = R/mvbw.q; sourceTree = "<group>"; };
 		0EC0C05616AF5B06004A7926 /* mvlinbin.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = mvlinbin.q; path = R/mvlinbin.q; sourceTree = "<group>"; };
 		0EC0C05716AF5B06004A7926 /* plot.discretize.kernel.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = plot.discretize.kernel.q; path = R/plot.discretize.kernel.q; sourceTree = "<group>"; };
 		0EC0C05816AF5B06004A7926 /* plot.mvkde.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = plot.mvkde.q; path = R/plot.mvkde.q; sourceTree = "<group>"; };
@@ -37,21 +39,17 @@
 		0EC0C05B16AF5B06004A7926 /* print.summary.mvkde.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = print.summary.mvkde.q; path = R/print.summary.mvkde.q; sourceTree = "<group>"; };
 		0EC0C05C16AF5B06004A7926 /* summary.mvkde.q */ = {isa = PBXFileReference; lastKnownFileType = text; name = summary.mvkde.q; path = R/summary.mvkde.q; sourceTree = "<group>"; };
 		0EC0C05D16AF5B13004A7926 /* wj.r */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = wj.r; path = inst/scripts/wj.r; sourceTree = "<group>"; };
-		0EC0C05E16AF5B20004A7926 /* bp.support.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = bp.support.Rd; path = man/bp.support.Rd; sourceTree = "<group>"; };
 		0EC0C05F16AF5B20004A7926 /* bpk.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = bpk.Rd; path = man/bpk.Rd; sourceTree = "<group>"; };
 		0EC0C06016AF5B20004A7926 /* bpkde.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = bpkde.Rd; path = man/bpkde.Rd; sourceTree = "<group>"; };
 		0EC0C06116AF5B20004A7926 /* discretize.kernel.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = discretize.kernel.Rd; path = man/discretize.kernel.Rd; sourceTree = "<group>"; };
 		0EC0C06216AF5B20004A7926 /* kernels.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = kernels.Rd; path = man/kernels.Rd; sourceTree = "<group>"; };
 		0EC0C06316AF5B20004A7926 /* M0.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = M0.Rd; path = man/M0.Rd; sourceTree = "<group>"; };
 		0EC0C06416AF5B20004A7926 /* M1.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = M1.Rd; path = man/M1.Rd; sourceTree = "<group>"; };
-		0EC0C06516AF5B20004A7926 /* methods.mvkde.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = methods.mvkde.Rd; path = man/methods.mvkde.Rd; sourceTree = "<group>"; };
-		0EC0C06616AF5B20004A7926 /* mvbw.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = mvbw.Rd; path = man/mvbw.Rd; sourceTree = "<group>"; };
 		0EC0C06716AF5B20004A7926 /* mvlinbin.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = mvlinbin.Rd; path = man/mvlinbin.Rd; sourceTree = "<group>"; };
-		0EC0C06816AF5B20004A7926 /* plot.discretize.kernel.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = plot.discretize.kernel.Rd; path = man/plot.discretize.kernel.Rd; sourceTree = "<group>"; };
-		0EC0C06916AF5B20004A7926 /* plot.mvkde.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = plot.mvkde.Rd; path = man/plot.mvkde.Rd; sourceTree = "<group>"; };
-		0EC0C06A16AF5B20004A7926 /* plot.mvlinbin.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = plot.mvlinbin.Rd; path = man/plot.mvlinbin.Rd; sourceTree = "<group>"; };
 		0EC0C06B16AF5B20004A7926 /* WandJones.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; name = WandJones.Rd; path = man/WandJones.Rd; sourceTree = "<group>"; };
 		0EDC20E4156C59B400A5739E /* NAMESPACE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NAMESPACE; sourceTree = SOURCE_ROOT; };
+		0EEAF3AA192D6983009A4812 /* contour.mvkde.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contour.mvkde.q; path = R/contour.mvkde.q; sourceTree = "<group>"; };
+		0EEAF3AB192D6A68009A4812 /* image.mvkde.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.mvkde.q; path = R/image.mvkde.q; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -71,19 +69,13 @@
 		0EC0C03D16AF5A9D004A7926 /* man */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0C05E16AF5B20004A7926 /* bp.support.Rd */,
 				0EC0C05F16AF5B20004A7926 /* bpk.Rd */,
 				0EC0C06016AF5B20004A7926 /* bpkde.Rd */,
 				0EC0C06116AF5B20004A7926 /* discretize.kernel.Rd */,
 				0EC0C06216AF5B20004A7926 /* kernels.Rd */,
 				0EC0C06316AF5B20004A7926 /* M0.Rd */,
 				0EC0C06416AF5B20004A7926 /* M1.Rd */,
-				0EC0C06516AF5B20004A7926 /* methods.mvkde.Rd */,
-				0EC0C06616AF5B20004A7926 /* mvbw.Rd */,
 				0EC0C06716AF5B20004A7926 /* mvlinbin.Rd */,
-				0EC0C06816AF5B20004A7926 /* plot.discretize.kernel.Rd */,
-				0EC0C06916AF5B20004A7926 /* plot.mvkde.Rd */,
-				0EC0C06A16AF5B20004A7926 /* plot.mvlinbin.Rd */,
 				0EC0C06B16AF5B20004A7926 /* WandJones.Rd */,
 			);
 			name = man;
@@ -122,11 +114,15 @@
 				0EC0C04E16AF5B06004A7926 /* bp.support.q */,
 				0EC0C04F16AF5B06004A7926 /* bpk.q */,
 				0EC0C05016AF5B06004A7926 /* bpkde.q */,
+				0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */,
+				0EEAF3AA192D6983009A4812 /* contour.mvkde.q */,
 				0EC0C05116AF5B06004A7926 /* discretize.kernel.q */,
+				0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */,
+				0EEAF3AB192D6A68009A4812 /* image.mvkde.q */,
+				0E6860CE1930167500BE95DE /* image.mvlinbin.q */,
 				0EC0C05216AF5B06004A7926 /* kernels.q */,
 				0EC0C05316AF5B06004A7926 /* M0.q */,
 				0EC0C05416AF5B06004A7926 /* M1.q */,
-				0EC0C05516AF5B06004A7926 /* mvbw.q */,
 				0EC0C05616AF5B06004A7926 /* mvlinbin.q */,
 				0EC0C05716AF5B06004A7926 /* plot.discretize.kernel.q */,
 				0EC0C05816AF5B06004A7926 /* plot.mvkde.q */,

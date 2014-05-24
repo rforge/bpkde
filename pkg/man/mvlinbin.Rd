@@ -10,13 +10,14 @@ Compute a binned approximation of the data on a regularly spaced grid using the 
 }
 
 \usage{
-mvlinbin(X, r = 7, padding = 0)
+mvlinbin(X, r = 7, padding = 0, bw = bw.SJ)
 }
 
 \arguments{
   \item{X}{a numeric matrix containing the data.}
   \item{r}{a positive integer value. The number of grid points \eqn{M} in each dimension is given by \eqn{M = 2^r}.}
-  \item{padding}{a postive numeric value specifying the amount of zero-padding around the smallest square (hypercube) containing the data.}
+  \item{padding}{a postive numeric value specifying the amount of zero-padding in units of bandwidth.}
+  \item{bw}{the function used to compute the univariate bandwidth estimates.}
 }
 
 \value{

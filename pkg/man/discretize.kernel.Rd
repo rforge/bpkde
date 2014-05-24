@@ -17,7 +17,7 @@ discretize.kernel(grid, kern.fun, ..., grid.fun = NULL, scale = TRUE)
   \item{grid}{a list created by the \code{mvlinbin} function.}
   \item{kern.fun}{a function for evaluating the kernel. The first argument must be a matrix whose rows contain the points where the density is to be evaluated.  See, for example, the \code{\link[mvtnorm]{dmvnorm}} function in the \code{mvtnorm} package.}
   \item{\dots}{additional arguments are passed to \code{kern.fun}.}
-  \item{grid.fun}{a function that returns the grid points where the kernel will be evaulated. See \code{\link{bp.support}} for an example.}
+  \item{grid.fun}{a function that returns the grid points where the kernel will be evaulated.}
   \item{scale}{a logical value. If \code{TRUE} then the kernel is scaled so that it integrates to 1 on the provided grid.}
 }
 

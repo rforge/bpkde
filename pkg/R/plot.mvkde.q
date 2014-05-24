@@ -1,33 +1,20 @@
-plot.mvkde <- function(x, y, what = c("kde", "kernel", "data"),
-                       plot.fun = c("image", "contour", "persp"), ...)
+plot.mvkde <- function(x, y, ...)
 {
   if(length(dim(x$z)) != 2)
-    stop("plot can only be used with 2 dimensional data")
+    stop("plot.mvkde can only be used with 2 dimensional data")
 
-  what <- match.arg(what)
-  plot.fun <- match.arg(plot.fun)
+  image.mvlinbin(x$linbin, ...)
+  contour.mvkde(x, add = TRUE, ...)
 
-  if(what == "kernel")
-    return(plot(x$kernel, plot.fun = plot.fun, ...))
+  if(!is.null(var.names <- colnames(x$linbin$axes))) {
+    dot.names <- names(list(...))
+    if(!("xlab" %in% dot.names))
+      mtext(var.names[1], side = 1, line = par("mgp")[1])
+    if(!("ylab" %in% dot.names))
+      mtext(var.names[2], side = 2, line = par("mgp")[1])
+  }
 
-  if(what == "data")
-    return(plot(x$linbin, ...))
-
-  dots <- list(...)
-  dots$x <- x$linbin$axes[, 1]
-  dots$y <- x$linbin$axes[, 2]
-  dots$z <- x$z
-  if(is.null(dots$col)) dots$col <- gray((0:32)/32)
-  if(is.null(dots$xlab)) dots$xlab <- ""
-  if(is.null(dots$ylab)) dots$ylab <- ""
-  if(plot.fun == "persp" && is.null(dots$zlab)) dots$zlab <- ""
-  if(plot.fun == "image" && is.null(dots$col)) dots$col <- gray((0:32)/32)
-
-  op <- par(pty = "s")
-  on.exit(par(op))
-  do.call(plot.fun, dots)
-
-  invisible(x)
+  invisible()
 }
 
 

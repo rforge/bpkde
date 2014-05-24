@@ -1,1 +1,28 @@
-exportPattern("^[^\\.]")
+export(
+  bpk,
+  bpkde,
+  biweight,
+  discretize.kernel,
+  epanechnikov,
+  rectangular,
+  triangular,
+  M0,
+  M1,
+  mvlinbin
+)
+
+import(KernSmooth)
+
+S3method(contour, discretize.kernel)
+S3method(contour, mvkde)
+S3method(image, discretize.kernel)
+S3method(image, mvkde)
+S3method(image, mvlinbin)
+S3method(plot, discretize.kernel)
+S3method(plot, mvkde)
+S3method(plot, mvlinbin)
+S3method(print, mvkde)
+S3method(summary, mvkde)
+S3method(print, summary.mvkde)
+
+

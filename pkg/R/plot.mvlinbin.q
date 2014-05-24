@@ -1,40 +1,26 @@
 plot.mvlinbin <- function(x, y, type = c("binned", "scatter"), ...)
 {
   if(x$d != 2)
-    stop("plot can only be used with 2 dimensional data")
+    stop("plot.mvlinbin can only be used with 2 dimensional data")
 
   type <- match.arg(type)
-  dots <- list(...)
 
-  if(type == "scatter") {
-    dots$x <- x$X
-    dots$xlim <- x$limits[[1]]
-    dots$ylim <- x$limits[[2]]
-    if(is.null(dots$pch)) dots$pch <- 16
-    if(is.null(dots$xlab)) dots$xlab <- ""
-    if(is.null(dots$ylab)) dots$ylab <- ""
-    if(is.null(dots$main)) dots$main <- paste("Scatter Plot of", x$name)
-
-    op <- par(pty = "s")
-    on.exit(par(op))
-    do.call(plot, dots)
-  }
+  if(type == "scatter")
+    plot(x$X, ...)
 
   if(type == "binned") {
-    dots$x <- x$axes[,1]
-    dots$y <- x$axes[,2]
-    dots$z <- x$xi
-    if(is.null(dots$col)) dots$col <- gray((32:0)/32)
-    if(is.null(dots$xlab)) dots$xlab <- ""
-    if(is.null(dots$ylab)) dots$ylab <- ""
-    if(is.null(dots$main)) dots$main <- paste("Binned Estimate of", x$name)
+    image.mvlinbin(x, ...)
 
-    op <- par(pty = "s")
-    on.exit(par(op))
-    do.call(image, dots)
+    if(!is.null(var.names <- colnames(x$axes))) {
+      dot.names <- names(list(...))
+      if(!("xlab" %in% dot.names))
+        mtext(var.names[1], side = 1, line = par("mgp")[1])
+      if(!("ylab" %in% dot.names))
+        mtext(var.names[2], side = 2, line = par("mgp")[1])
+    }
   }
 
-  invisible(x)
+  invisible()
 }
 
 
