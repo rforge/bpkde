@@ -13,15 +13,11 @@ mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
   axes <- apply(ranges, 2, seq.fun, len = M + 1)
   colnames(axes) <- colnames(X)
 
-  if(d == 1) {
-    linbin <- eval(parse(text = paste("KernSmooth", "linbin", sep = ":::")))
+  if(d == 1)
     xi <- matrix(linbin(X, axes[,1]), ncol = 1)
-  }
 
-  else if(d == 2) {
-    linbin2D <- eval(parse(text = paste("KernSmooth", "linbin2D", sep = ":::")))
+  else if(d == 2)
     xi <- linbin2D(X, axes[,1], axes[,2])
-  }
 
   else {
     int <- matrix(0, N, d)

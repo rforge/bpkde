@@ -1,0 +1,70 @@
+
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(bpkde)
+> 
+> datasets <- data(package = "bpkde")$results[, 3]
+> 
+> set.seed(0)
+> for(d in datasets) {
++   data(list = d)
++   mat <- get(d)
++   print(d)
++   print(bpkde(mat))
++ }
+[1] "Bimodal1"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09307652 
+[1] "Bimodal2"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1432188 
+[1] "Bimodal3"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1048882 
+[1] "Bimodal4"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1018136 
+[1] "Correlated.Normal"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09768961 
+[1] "Kurtotic"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1052368 
+[1] "Quadrimodal"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.07639025 
+[1] "Skewed"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1472124 
+[1] "Trimodal1"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1094951 
+[1] "Trimodal2"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1280978 
+[1] "Trimodal3"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09519673 
+[1] "Uncorrelated.Normal"
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1521511 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  9.563   0.136   9.767 

@@ -1,0 +1,50 @@
+
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(bpkde)
+> 
+> datasets <- data(package = "bpkde")$results[, 3]
+> referencePackages <- c("KernSmooth")
+> packages <- c("bpkde", referencePackages)
+> 
+> if(require(referencePackages, character.only = TRUE)) {
++   linbin2Ds <- list()
++   bin.est <- list()
++   for(p in packages)
++     linbin2Ds[[p]] <- eval(parse(text = paste(p, "linbin2D", sep = ":::")))
++ 
++   for(d in datasets) {
++     data(list = d)
++     mat <- get(d)
++     x <- seq(min(mat[, 1]) - 1, max(mat[, 1]) + 1, length = 100)
++     y <- seq(min(mat[, 2]) - 1, max(mat[, 2]) + 1, length = 100)
++     bin.est[[1]] <- linbin2Ds[[1]](mat, x, y)
++     bin.est[[2]] <- linbin2Ds[[2]](mat, x, y)
++     print(d)
++     stopifnot(all.equal(bin.est[[1]], bin.est[[2]]))
++   }
++ }
+Loading required package: KernSmooth
+Warning message:
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called 'KernSmooth'
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  0.337   0.057   0.372 

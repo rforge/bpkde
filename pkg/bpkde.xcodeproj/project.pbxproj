@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		0E641BF51932970700F528EF /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = init.c; sourceTree = "<group>"; };
+		0E641BF61932970700F528EF /* linbin.f */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran; path = linbin.f; sourceTree = "<group>"; };
+		0E641BF71932970700F528EF /* linbin2D.f */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran; path = linbin2D.f; sourceTree = "<group>"; };
+		0E641BF81932970700F528EF /* Makevars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makevars; sourceTree = "<group>"; };
 		0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contour.discretize.kernel.q; path = R/contour.discretize.kernel.q; sourceTree = "<group>"; };
 		0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.discretize.kernel.q; path = R/image.discretize.kernel.q; sourceTree = "<group>"; };
 		0E6860CE1930167500BE95DE /* image.mvlinbin.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.mvlinbin.q; path = R/image.mvlinbin.q; sourceTree = "<group>"; };
 		0EADCD101545C1BF00D38640 /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
+		0EBB51A419329B1F008A994A /* bpkde.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = bpkde.R; path = tests/bpkde.R; sourceTree = "<group>"; };
+		0EBB51A519329B1F008A994A /* linbin.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = linbin.R; path = tests/linbin.R; sourceTree = "<group>"; };
+		0EBB51A71932A17E008A994A /* KernSmooth.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = KernSmooth.q; path = R/KernSmooth.q; sourceTree = "<group>"; };
 		0EC0C02D16AF58AC004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
 		0EC0C04216AF5AF7004A7926 /* Bimodal1.RData */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bimodal1.RData; path = data/Bimodal1.RData; sourceTree = "<group>"; };
 		0EC0C04316AF5AF7004A7926 /* Bimodal2.RData */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bimodal2.RData; path = data/Bimodal2.RData; sourceTree = "<group>"; };
@@ -53,6 +60,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		0E641BF41932970700F528EF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0E641BF51932970700F528EF /* init.c */,
+				0E641BF61932970700F528EF /* linbin.f */,
+				0E641BF71932970700F528EF /* linbin2D.f */,
+				0E641BF81932970700F528EF /* Makevars */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		0EADCCFF1545BF1500D38640 = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +81,18 @@
 				0EC0C03F16AF5AB8004A7926 /* data */,
 				0EC0C03E16AF5AA7004A7926 /* inst */,
 				0EC0C03D16AF5A9D004A7926 /* man */,
+				0E641BF41932970700F528EF /* src */,
+				0EBB51A619329B28008A994A /* tests */,
 			);
+			sourceTree = "<group>";
+		};
+		0EBB51A619329B28008A994A /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				0EBB51A419329B1F008A994A /* bpkde.R */,
+				0EBB51A519329B1F008A994A /* linbin.R */,
+			);
+			name = tests;
 			sourceTree = "<group>";
 		};
 		0EC0C03D16AF5A9D004A7926 /* man */ = {
@@ -130,6 +159,7 @@
 				0EC0C05A16AF5B06004A7926 /* print.mvkde.q */,
 				0EC0C05B16AF5B06004A7926 /* print.summary.mvkde.q */,
 				0EC0C05C16AF5B06004A7926 /* summary.mvkde.q */,
+				0EBB51A71932A17E008A994A /* KernSmooth.q */,
 			);
 			name = R;
 			sourceTree = "<group>";
