@@ -1,7 +1,7 @@
 
-R version 3.1.0 (2014-04-10) -- "Spring Dance"
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
 Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
+Platform: x86_64-apple-darwin13.3.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -17,34 +17,38 @@ Type 'q()' to quit R.
 
 > library(bpkde)
 > 
-> datasets <- data(package = "bpkde")$results[, 3]
-> referencePackages <- c("KernSmooth")
-> packages <- c("bpkde", referencePackages)
-> 
-> if(require(referencePackages, character.only = TRUE)) {
-+   linbin2Ds <- list()
-+   bin.est <- list()
-+   for(p in packages)
-+     linbin2Ds[[p]] <- eval(parse(text = paste(p, "linbin2D", sep = ":::")))
+> if(require(KernSmooth)) {
++   datasets <- data(package = "bpkde")$results[, 3]
 + 
 +   for(d in datasets) {
 +     data(list = d)
 +     mat <- get(d)
 +     x <- seq(min(mat[, 1]) - 1, max(mat[, 1]) + 1, length = 100)
 +     y <- seq(min(mat[, 2]) - 1, max(mat[, 2]) + 1, length = 100)
-+     bin.est[[1]] <- linbin2Ds[[1]](mat, x, y)
-+     bin.est[[2]] <- linbin2Ds[[2]](mat, x, y)
++     ks <- KernSmooth:::linbin2D(mat, x, y)
++     me <- bpkde:::linbin2D(mat, x, y)
 +     print(d)
-+     stopifnot(all.equal(bin.est[[1]], bin.est[[2]]))
++     stopifnot(all.equal(ks, me))
 +   }
 + }
 Loading required package: KernSmooth
-Warning message:
-In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called 'KernSmooth'
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+[1] "Bimodal1"
+[1] "Bimodal2"
+[1] "Bimodal3"
+[1] "Bimodal4"
+[1] "Correlated.Normal"
+[1] "Kurtotic"
+[1] "Quadrimodal"
+[1] "Skewed"
+[1] "Trimodal1"
+[1] "Trimodal2"
+[1] "Trimodal3"
+[1] "Uncorrelated.Normal"
 > 
 > 
 > 
 > proc.time()
    user  system elapsed 
-  0.337   0.057   0.372 
+  0.210   0.029   0.227 

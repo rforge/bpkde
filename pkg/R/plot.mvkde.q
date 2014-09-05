@@ -1,9 +1,9 @@
 plot.mvkde <- function(x, y, ...)
 {
-  if(length(dim(x$z)) != 2)
+  if(x$d != 2)
     stop("plot.mvkde can only be used with 2 dimensional data")
 
-  image.mvlinbin(x$linbin, ...)
+  image.mvlinbin(x, ...)
   contour.mvkde(x, add = TRUE, ...)
 
   if(!is.null(var.names <- colnames(x$linbin$axes))) {

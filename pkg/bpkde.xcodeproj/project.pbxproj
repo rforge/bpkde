@@ -14,6 +14,7 @@
 		0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contour.discretize.kernel.q; path = R/contour.discretize.kernel.q; sourceTree = "<group>"; };
 		0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.discretize.kernel.q; path = R/image.discretize.kernel.q; sourceTree = "<group>"; };
 		0E6860CE1930167500BE95DE /* image.mvlinbin.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.mvlinbin.q; path = R/image.mvlinbin.q; sourceTree = "<group>"; };
+		0E707FB719AFD7DE00577CA8 /* predict.mvkde.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = predict.mvkde.q; path = R/predict.mvkde.q; sourceTree = "<group>"; };
 		0EADCD101545C1BF00D38640 /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EBB51A419329B1F008A994A /* bpkde.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = bpkde.R; path = tests/bpkde.R; sourceTree = "<group>"; };
 		0EBB51A519329B1F008A994A /* linbin.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = linbin.R; path = tests/linbin.R; sourceTree = "<group>"; };
@@ -69,6 +70,23 @@
 				0E641BF81932970700F528EF /* Makevars */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		0E707FB819AFE53200577CA8 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				0EC0C04E16AF5B06004A7926 /* bp.support.q */,
+				0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */,
+				0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */,
+				0EBB51A71932A17E008A994A /* KernSmooth.q */,
+				0EC0C05716AF5B06004A7926 /* plot.discretize.kernel.q */,
+				0EC0C05816AF5B06004A7926 /* plot.mvkde.q */,
+				0EC0C05916AF5B06004A7926 /* plot.mvlinbin.q */,
+				0EC0C05A16AF5B06004A7926 /* print.mvkde.q */,
+				0EC0C05B16AF5B06004A7926 /* print.summary.mvkde.q */,
+				0EC0C05C16AF5B06004A7926 /* summary.mvkde.q */,
+			);
+			name = private;
 			sourceTree = "<group>";
 		};
 		0EADCCFF1545BF1500D38640 = {
@@ -140,26 +158,18 @@
 		0EC0C04016AF5ABF004A7926 /* R */ = {
 			isa = PBXGroup;
 			children = (
-				0EC0C04E16AF5B06004A7926 /* bp.support.q */,
 				0EC0C04F16AF5B06004A7926 /* bpk.q */,
 				0EC0C05016AF5B06004A7926 /* bpkde.q */,
-				0E6860CC193013DC00BE95DE /* contour.discretize.kernel.q */,
 				0EEAF3AA192D6983009A4812 /* contour.mvkde.q */,
 				0EC0C05116AF5B06004A7926 /* discretize.kernel.q */,
-				0E6860CD193013DC00BE95DE /* image.discretize.kernel.q */,
 				0EEAF3AB192D6A68009A4812 /* image.mvkde.q */,
 				0E6860CE1930167500BE95DE /* image.mvlinbin.q */,
 				0EC0C05216AF5B06004A7926 /* kernels.q */,
 				0EC0C05316AF5B06004A7926 /* M0.q */,
 				0EC0C05416AF5B06004A7926 /* M1.q */,
 				0EC0C05616AF5B06004A7926 /* mvlinbin.q */,
-				0EC0C05716AF5B06004A7926 /* plot.discretize.kernel.q */,
-				0EC0C05816AF5B06004A7926 /* plot.mvkde.q */,
-				0EC0C05916AF5B06004A7926 /* plot.mvlinbin.q */,
-				0EC0C05A16AF5B06004A7926 /* print.mvkde.q */,
-				0EC0C05B16AF5B06004A7926 /* print.summary.mvkde.q */,
-				0EC0C05C16AF5B06004A7926 /* summary.mvkde.q */,
-				0EBB51A71932A17E008A994A /* KernSmooth.q */,
+				0E707FB719AFD7DE00577CA8 /* predict.mvkde.q */,
+				0E707FB819AFE53200577CA8 /* private */,
 			);
 			name = R;
 			sourceTree = "<group>";

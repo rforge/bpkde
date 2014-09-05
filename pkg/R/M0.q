@@ -2,16 +2,16 @@ M0 <- function(grid, kern.fun, ...)
 {
   X <- grid$X
   M <- grid$M
-  N <- grid$N
+  n <- grid$n
   d <- grid$d
 
-  Y <- matrix(0.0, N*(N-1), d)
+  Y <- matrix(0.0, n*(n-1), d)
   k <- 1
 
-  score <- matrix(0, N, N)
+  score <- matrix(0, n, n)
 
-  for(i in 1:N) {
-    for(j in (1:N)[-i]) {
+  for(i in 1:n) {
+    for(j in (1:n)[-i]) {
       Y[k, ] <- X[i,] - X[j,]
       k <- k + 1
     }
@@ -27,7 +27,7 @@ M0 <- function(grid, kern.fun, ...)
   if(is.numeric(k$scale))
     score <- score / k$scale
 
-  sum(z^2)*grid$delta^d - 2/(N*(N-1)) * sum(score)
+  sum(z^2)*prod(grid$deltas) - 2/(n*(n-1)) * sum(score)
 }
 
 

@@ -1,16 +1,24 @@
-mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
+mvlinbin <- function(X, r = 7, padding)
 {
-  if(!is.array(X))
-    X <- matrix(X, ncol = 1)
+  X <- data.matrix(X)
 
-  N <- dim(X)[1]
+  n <- dim(X)[1]
   d <- dim(X)[2]
   M <- 2^r
 
-  ranges <- apply(X, 2, range) + padding * (c(-1, 1) %o% apply(X, 2, bw))
-  deltas <- apply(ranges, 2, diff) / M
-  seq.fun <- function(u, len) seq(u[1], u[2], length = len)
-  axes <- apply(ranges, 2, seq.fun, len = M + 1)
+  ranges <- apply(X, 2, range)
+
+  if(!missing(padding)) {
+    if(length(padding) == d && !any(padding < 0))
+      ranges <- ranges + (c(-1, 1) %o% padding)
+    else
+      warning("invalid padding argument; zero padding used")
+  }
+
+  deltas <- apply(ranges, 2, diff) / (M - 1)
+  axes <- matrix(0.0, M + 1, d)
+  for(j in 1:d)
+    axes[, j] <- seq(from = ranges[1, j], by = deltas[j], length = M + 1)
   colnames(axes) <- colnames(X)
 
   if(d == 1)
@@ -20,9 +28,9 @@ mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
     xi <- linbin2D(X, axes[,1], axes[,2])
 
   else {
-    int <- matrix(0, N, d)
+    int <- matrix(0, n, d)
     for(j in 1:d)
-      int[,j] <- findInterval(X[, j], axes[,j], all.inside = TRUE)
+      int[, j] <- findInterval(X[, j], axes[,j], all.inside = TRUE)
 
     adj <- list()
     adj[1:d] <- list(0:1)
@@ -34,7 +42,7 @@ mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
 
     xi <- array(0.0, dim = rep(M+1, d))
 
-    for(i in 1:N) {
+    for(i in 1:n) {
       K <- matrix(int[i, ], nrow = pow2d, ncol = d, byrow = TRUE) + adj
       vertices <- apply(K+J, 1, function(u, Y) Y[u], Y = axes)
       B <- deltas - abs(vertices - X[i,])
@@ -45,8 +53,13 @@ mvlinbin <- function(X, r = 7, padding = 0, bw = bw.SJ)
   xi <- do.call("[", c(list(xi), as.list(rep(-(M+1), d))))
   xi <- xi / (sum(xi) * prod(deltas))
 
-  ans <- list(xi = xi, axes = axes[-(M+1),], X = X, deltas = deltas,
-              M = M, N = N, d = d)
+  ans <- list(axes = axes[-(M+1),],
+              xi = xi,
+              X = X,
+              deltas = deltas,
+              M = M,
+              n = n,
+              d = d)
 
   oldClass(ans) <- "mvlinbin"
   ans

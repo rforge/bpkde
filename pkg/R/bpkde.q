@@ -1,8 +1,8 @@
-bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
+bpkde <- function(data, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
                   r = 7, padding = 4)
 {
-  name <- deparse(substitute(X))
-  X <- data.matrix(X)
+  name <- deparse(substitute(data))
+  X <- data.matrix(data)
 
   if(dim(X)[2] == 2 && missing(alphas)) {
     thetas <- seq(from = -pi/2, to = pi/2, length = 91)[-91]
@@ -16,10 +16,13 @@ bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
 
   b <- apply(alphas, 2, function(u, Y, bw) bw(drop(Y %*% u)), Y = X, bw = bw)
   bws <- list(alphas = alphas, lambdas = b)
-  xbin <- mvlinbin(X, r, padding = padding, bw = bw)
-  M <- xbin$M
-  d <- xbin$d
-  xbin.dft <- fft(xbin$xi) / M^d
+
+  if(padding > 0)
+    xbin <- mvlinbin(X, r, padding = padding * apply(X, 2, bw))
+  else
+    xbin <- mvlinbin(X, r)
+
+  xi.dft <- fft(xbin$xi) / xbin$M^xbin$d
 
   lscv <- function(x, g, b, h, u)
     h(grid = g, kern.fun = bpk, a = x, bandwidths = b,
@@ -36,15 +39,13 @@ bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
 
   K.dft <- prod(xbin$deltas) * fft(K$z)
 
-  z <- Re(fft(xbin.dft * K.dft, inverse = TRUE))
+  z <- Re(fft(xi.dft * K.dft, inverse = TRUE))
   z[z < 0.0] <- 0.0
 
-  f.hat <- list(name = name,
-                linbin = xbin,
-                z = z,
-                params = list(a.hat = a.hat, bandwidths = bws),
-                kernel = K,
-                lscv.score = lscv.score)
+  f.hat <- c(xbin,
+             list(name = name, z = z, kernel = K,
+             params = list(a.hat = a.hat, bandwidths = bws),
+             lscv.score = lscv.score))
 
   oldClass(f.hat) <- c("bpkde", "mvkde")
 

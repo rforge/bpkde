@@ -1,7 +1,7 @@
 
-R version 3.1.0 (2014-04-10) -- "Spring Dance"
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
 Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
+Platform: x86_64-apple-darwin13.3.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -17,54 +17,130 @@ Type 'q()' to quit R.
 
 > library(bpkde)
 > 
-> datasets <- data(package = "bpkde")$results[, 3]
-> 
 > set.seed(0)
+> 
+> datasets <- data(package = "bpkde")$results[, 3]
+> uks <- list(dnorm, epanechnikov, rectangular)
+> 
 > for(d in datasets) {
 +   data(list = d)
 +   mat <- get(d)
 +   print(d)
-+   print(bpkde(mat))
++   for(uk in uks) {
++     f <- bpkde(mat, kernel = uk)
++     print(f)
++   }
 + }
 [1] "Bimodal1"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.09307652 
+  Least-squares cross-validation score: -0.09301327 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09310145 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09416198 
 [1] "Bimodal2"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1432188 
+  Least-squares cross-validation score: -0.1432653 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1434025 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1435029 
 [1] "Bimodal3"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1048882 
+  Least-squares cross-validation score: -0.104922 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1051078 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1053223 
 [1] "Bimodal4"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1018136 
+  Least-squares cross-validation score: -0.1018003 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1019299 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1021707 
 [1] "Correlated.Normal"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.09768961 
+  Least-squares cross-validation score: -0.09777361 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09784603 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09795059 
 [1] "Kurtotic"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1052368 
+  Least-squares cross-validation score: -0.1053617 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1055658 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1058682 
 [1] "Quadrimodal"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.07639025 
+  Least-squares cross-validation score: -0.0763596 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.07644892 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.07661395 
 [1] "Skewed"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1472124 
+  Least-squares cross-validation score: -0.1472034 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1472632 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1475654 
 [1] "Trimodal1"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1094951 
+  Least-squares cross-validation score: -0.1095891 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1100468 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1105121 
 [1] "Trimodal2"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1280978 
+  Least-squares cross-validation score: -0.128143 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1284316 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1286655 
 [1] "Trimodal3"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.09519673 
+  Least-squares cross-validation score: -0.09517742 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.09523681 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.0952688 
 [1] "Uncorrelated.Normal"
   A kernel desnity esimtate of mat 
-  Least-squares cross-validation score: -0.1521511 
+  Least-squares cross-validation score: -0.1522043 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.1521973 
+  A kernel desnity esimtate of mat 
+  Least-squares cross-validation score: -0.15221 
+> 
+> 
+> # Quick test of M0
+> 
+> data(Kurtotic)
+> xbin <- mvlinbin(Kurtotic)
+> 
+> thetas <- seq(from = -pi/2, to = pi/2, length = 91)[-91]
+> alphas <- rbind(cos(thetas), sin(thetas))
+> b <- apply(alphas, 2, function(u, Y, bw) bw(drop(Y %*% u)),
++            Y = Kurtotic, bw = bw.SJ)
+> bws <- list(alphas = alphas, lambdas = b)
+> 
+> cat("test M0\n")
+test M0
+> print(M0(xbin, bpk, bandwidths = bws))
+[1] -0.04268889
+> 
+> 
+> # Quick test for 3d
+> 
+> X <- matrix(rnorm(3000), 1000, 3)
+> dev.null <- mvlinbin(X)
 > 
 > 
 > 
 > proc.time()
    user  system elapsed 
-  9.563   0.136   9.767 
+ 26.011   0.424  26.416 

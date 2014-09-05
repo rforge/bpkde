@@ -10,11 +10,11 @@ Compute a \code{d}-dimensional kernel density estimate using a back-projected ke
 }
 
 \usage{
-bpkde(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1, r = 7, padding = 4)
+bpkde(data, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1, r = 7, padding = 4)
 }
 
 \arguments{
-  \item{X}{a numeric matrix of dimension \code{N} by \code{d} containing the sample points.}
+  \item{data}{a matrix or data frame. The data is coerced to a numeric matrix using the \code{\link[base]{data.matrix}} function.}
   \item{alphas}{a numeric matrix of dimension \code{d} by \code{K} whose columns contain the directions (as unit vectors) used for the back projection. If missing, 90 equally space directions spanning the interval \eqn{[-\pi/2, \pi/2)} are used when \code{d == 2} and 450 randomly chosen directions are used when \code{d == 3}.  This argument must be provided for \code{d >= 4}.}
   \item{kernel}{a function for evaluating the univariate kernel.}
   \item{bw}{the function used to compute the univariate bandwidth estimates.}
